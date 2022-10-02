@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Thoughts on the ARC Benchmark - Dipam Chakraborty</title><meta name="Description" content="Notes on the ARC benchmark, my experience at the competition, and how it can become a long-term benchmark in AI."><meta property="og:title" content="Thoughts on the ARC Benchmark" />
+<meta property="og:description" content="Notes on the ARC benchmark, my experience at the competition, and how it can become a long-term benchmark in AI." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/thoughts-on-the-arc-benchmark/" /><meta property="og:image" content="http://example.org/thoughts-on-the-arc-benchmark/featured-image.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-02T16:29:41+08:00" />
+<meta property="article:modified_time" content="2022-10-02T16:29:41+08:00" /><meta property="og:site_name" content="Dipam Chakraborty" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/thoughts-on-the-arc-benchmark/featured-image.png"/>
+<meta name="twitter:title" content="Thoughts on the ARC Benchmark"/>
+<meta name="twitter:description" content="Notes on the ARC benchmark, my experience at the competition, and how it can become a long-term benchmark in AI."/>
+<meta name="application-name" content="Dipam Chakraborty&#39;s website">
+<meta name="apple-mobile-web-app-title" content="Dipam Chakraborty&#39;s website"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/thoughts-on-the-arc-benchmark/" /><link rel="next" href="http://example.org/about/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Thoughts on the ARC Benchmark",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/thoughts-on-the-arc-benchmark\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "http:\/\/example.org\/thoughts-on-the-arc-benchmark\/featured-image.png",
+                            "width":  869 ,
+                            "height":  196 
+                        }],"genre": "posts","keywords": "Deep Learning, Benchmarks","wordcount":  2485 ,
+        "url": "http:\/\/example.org\/thoughts-on-the-arc-benchmark\/","datePublished": "2022-07-02T16:29:41+08:00","dateModified": "2022-10-02T16:29:41+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Dipam Chakraborty"
+            },"description": "Notes on the ARC benchmark, my experience at the competition, and how it can become a long-term benchmark in AI."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Dipam Chakraborty">Dipam Chakraborty</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" 
+                       href="/dipam_cv.pdf" title="Dipam Chakraborty Resume"
+                        
+                       rel="noopener noreffer" target="_blank"
+                       
+                    > Resume </a><a class="menu-item" 
+                       href="/posts/"
+                       
+                    > Blog </a><a class="menu-item" 
+                       href="/about/"
+                       
+                    > About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Dipam Chakraborty">Dipam Chakraborty</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/dipam_cv.pdf" title="Dipam Chakraborty Resume"
+                     rel="noopener noreffer" target="_blank" 
+                    
+                    >Resume</a><a class="menu-item" href="/posts/" title=""
+                    
+                    >Blog</a><a class="menu-item" href="/about/" title=""
+                    
+                    >About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Thoughts on the ARC Benchmark</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-category">included in <a href="/categories/machine-learning/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Machine Learning</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-02-07">2022-02-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2485 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;12 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/thoughts-on-the-arc-benchmark/featured-image.png"
+        data-srcset="/thoughts-on-the-arc-benchmark/featured-image.png, /thoughts-on-the-arc-benchmark/featured-image.png 1.5x, /thoughts-on-the-arc-benchmark/featured-image.png 2x"
+        data-sizes="auto"
+        alt="/thoughts-on-the-arc-benchmark/featured-image.png"
+        title="Notes on the ARC benchmark, my experience at the competition, and how it can become a long-term benchmark in AI." /></div><div class="content" id="content"><p><em>Notes on the ARC benchmark, my experience at the competition, and how it can become a long-term benchmark in AI.</em></p>
+<h1 id="the-arc-benchmark">The ARC Benchmark</h1>
+<p>Around the end of 2019, François Chollet released the  <a href="https://github.com/fchollet/ARC" target="_blank" rel="noopener noreffer ">Abstraction and Reasoning Corpus (ARC) benchmark</a>, along with the paper  <a href="https://arxiv.org/abs/1911.01547" target="_blank" rel="noopener noreffer ">On the Measure of Intelligence</a>. And in the paper, he made a powerful claim: that deep learning cannot solve the ARC benchmark.</p>
+<p>On the surface, the tasks in the benchmark are simple. You get a few example images for a task that applies some simple logic to the image. And then you&rsquo;re asked to generate images for one or more test images that follow the same logic. Pretty much like a question format used in common IQ tests. Here are some examples:</p>
+<div id="id-1"><figure><a class="lightgallery" href="/images/arc/arc_tasks.png" title="Example ARC Tasks" data-thumbnail="/images/arc/arc_tasks.png" data-sub-html="<h2>Two tasks from the train set. My descriptions of the tasks: Left &lsquo;Make the structure symmetrical, add the added part red&rsquo;, Right: &lsquo;Fill the smallest box with magenta, the next with orange, and the largest with sky blue.&rsquo;</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/arc/arc_tasks.png"
+            data-srcset="/images/arc/arc_tasks.png, /images/arc/arc_tasks.png 1.5x, /images/arc/arc_tasks.png 2x"
+            data-sizes="auto"
+            alt="Example ARC Tasks" width="100%" />
+    </a><figcaption class="image-caption">Two tasks from the train set. My descriptions of the tasks: Left &lsquo;Make the structure symmetrical, add the added part red&rsquo;, Right: &lsquo;Fill the smallest box with magenta, the next with orange, and the largest with sky blue.&rsquo;</figcaption>
+    </figure> 
+</div>
+<p>The paper makes the claim that <strong>Deep Learning is &ldquo;conceptually similar to a locality-sensitive hashtable&rdquo;</strong>, and cannot generalize beyond the kind of data it is trained on. This was pretty new to me, I was a noob in the ML space, but it really piqued my interest. The paper describes in detail the kinds of generalizations, and how to measure them; and why deep learning cannot generalize to these higher forms of generalization (such as what will be required to solve ARC). I highly recommend going through the paper, in this blog I&rsquo;ll only focus on the ARC benchmark.</p>
+<p><strong>What concepts does the benchmark use to generate the tasks?</strong> - The goal is to encode priors that are common to humans, that&rsquo;s no simple goal, and is vaguely understood. To quote the paper &ldquo;What is the exact list of knowledge priors that humans are born with? This is the question that the developmental science theory of Core Knowledge seeks to answer.&rdquo;  These are the broad categories of priors that are used
+Objectness and elementary physics - A red circle on a black background, and a line at the edge, we imagine a sphere hitting a wall.</p>
+<p>Agentness and goal-directedness - A blue dot in an orange maze, our immediate intuition is the blue dot is an agent.</p>
+<p>Natural numbers and elementary arithmetic - Counting, adding, subtracting, we naturally do it without being taught.</p>
+<p>Elementary geometry and topology - Rotating a square by 45 degrees makes a diamond, we&rsquo;re easily able to visualize this.</p>
+<h3 id="why-cant-deep-learning-solve-arc">Why can&rsquo;t deep learning solve ARC?</h3>
+<p>Chollet&rsquo;s argument is that <strong>deep learning is just pattern matching on low dimensional data</strong> that is its training dataset. But wait, aren&rsquo;t images &ldquo;high dimensional&rdquo;, and you can&rsquo;t really interpolate high dimensional data? Yann LeCun certainly says so. So who is right? Well, they&rsquo;re kind of talking about different things. Yes, images are high dimensional, if you consider the individual pixels as independent variables. But <strong>for a dataset that represents a concept, e.g &ldquo;natural images&rdquo;, pixels are not independent.</strong> Its pretty intuitive to understand that pixel values near each other on the same object will be close in value. But an extended idea on this is that <strong>there exists a low dimensional manifold in the high dimensional euclidian space that encompasses the entire dataset.</strong> This is known as the manifold hypothesis, here&rsquo;s my <a href="https://www.youtube.com/watch?v=BePQBWPnYuE" target="_blank" rel="noopener noreffer ">favourite video that explains the manifold hypothesis</a>. Note that this doesn&rsquo;t make the manifold hypothesis necessarily correct, for an extended discussion check out this video from the Machine Learning Street Talk podcast. This debate is long ongoing, here&rsquo;s a <a href="https://twitter.com/search?q=ylecun%20extrapolation&amp;src=typed_query&amp;f=top" target="_blank" rel="noopener noreffer ">twitter query</a> to put you down a rabbit hole. 😉</p>
+<p>The point is, to solve the tasks on the ARC Benchmark, deep learning cannot leverage pattern matching. The tasks are hand designed and independent, not generated by some underlying code.</p>
+<p>In a later <a href="https://www.youtube.com/watch?v=J0p_thJJnoo" target="_blank" rel="noopener noreffer ">interview</a>, Chollet shares that coming up with these tasks is hard and takes a lot of time. The benchmark is limited to 300 tasks total. 100 for &ldquo;training&rdquo;, 100 for &ldquo;testing&rdquo;, and 100 secret tasks for evaluation. There&rsquo;s no need follow the split as such, though the training tasks are somewhat easier.</p>
+<h3 id="challenge-design">Challenge Design</h3>
+<p>The competition was designed as many others on Kaggle. You get a dataset to train on, and you&rsquo;re expected to submit code that works on the evaluation dataset, without ever seeing the evaluation data. Obviously, there&rsquo;s a time limit to run your code. Of course, ARC is not a standard machine learning benchmark. There are only 200 tasks, the only thing common between them is the human like priors described in the above section.</p>
+<p><strong>How does one approach such a competition?</strong> - ARC is pretty different from most other competitions. While IQ test benchmarks are not uncommon, most formulate it as a classification problem. ARC requires you to generate the exact answer, which in turn means you need not only need a fuzzy understanding of concepts (something one might hope Deep learning can do, though manifold hypothesis suggests it can&rsquo;t); and also have a module that produces exact results. For the latter, an AI that generates programs is a good approach. So you would need to combine fuzzy heuristics which does the &ldquo;abstraction and reasoning&rdquo;, with a program generation process. This makes the challenge exceedingly difficult in my opinion, but that&rsquo;s what makes it fun!</p>
+<p>Here&rsquo;s <a href="https://www.kaggle.com/competitions/abstraction-and-reasoning-challenge/discussion/131005" target="_blank" rel="noopener noreffer ">Chollet&rsquo;s recommendation</a> on how to work on the competition.</p>
+<h3 id="one-major-flaw">One major flaw</h3>
+<p>The challenge had one major flaw in my opinion. There was no private leaderboard. All the 100 evaluation tasks were on the public leaderboard. Organizers claimed that they&rsquo;re confident no one can beat even 20 of the 100 tasks (Spoiler: the top solution beat 21). A lot of great engineering ideas were implemented, and the shared solutions are a goldmine of ideas.</p>
+<p>Nevertheless, <strong>not having a private leaderboard meant overfitting to the public leaderboard</strong>. It becomes a guessing game of what the tasks could be, and incorporate code to run that idea. Even if you don&rsquo;t explicitly probe the tasks, say you add some code and it doesn&rsquo;t move the scores, you&rsquo;re likely to remove it (remember there&rsquo;s the time limit to run your code). This defeats the purpose of generalization, in the sense that no new major solutions were found, just a lot of engineering to incorporate priors and do fast program search.</p>
+<h3 id="ideas-shared-by-participants">Ideas shared by participants</h3>
+<p>As the competition progressed, participants shared a wide variety of ideas they were looking into. Decision trees, genetic algorithms, vision models, sequence to sequence models, and cellular automata to name a few. None of them could be used out of the box per se, the priors that the tasks used had to be hand-coded somehow.</p>
+<p>One thing was common, participants often created their own domain-specific language (DSL) for the tasks, based on the priors. For example, one had to find &ldquo;objects&rdquo; in the images, possibly downscale/upscale them, rotate them, etc. See the below figure for an example task. All of these were specific to the ARC benchmark, and everyone set out to make high quality implementations of these priors.</p>
+<div id="id-2"><a class="lightgallery" href="/images/arc/arc_simple_task.png" title="ARC Simple Task" data-thumbnail="/images/arc/arc_simple_task.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/arc/arc_simple_task.png"
+            data-srcset="/images/arc/arc_simple_task.png, /images/arc/arc_simple_task.png 1.5x, /images/arc/arc_simple_task.png 2x"
+            data-sizes="auto"
+            alt="ARC Simple Task" width="50%" />
+    </a> 
+</div>
+<div id="id-3"><figure><a class="lightgallery" href="" title="" data-thumbnail="" data-sub-html="<h2>Humans would likely think of this as a two &lsquo;step&rsquo; task: 1. Cut out the object 2. Repeat it horizontally, one time.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src=""
+            data-srcset=",  1.5x,  2x"
+            data-sizes="auto"
+            alt="" />
+    </a><figcaption class="image-caption">Humans would likely think of this as a two &lsquo;step&rsquo; task: 1. Cut out the object 2. Repeat it horizontally, one time.</figcaption>
+    </figure> 
+</div>
+<p>Even to my newbie&rsquo;s brain, there seemed to be some critical problems with all these approaches. First, <strong>the DSLs were catered for the ARC dataset, not really generalized</strong>, they reminded me of feature engineering for a specific task/dataset. In that sense, a 3 month competition is too short for such a benchmark, where you need to design your DSL, try different algorithms to use it, and make it efficient to meet the compute limits, while each step depends on the others.</p>
+<p>Second, <strong>it wasn&rsquo;t clear that using a DSL was even the right approach</strong>. Yes, Chollet had suggested it so everyone was trying to make one (myself included), but if we&rsquo;re trying to generate programs that solve for general tasks, would a DSL really be the right approach? When humans approach the problems, the priors are used, but often we come up with some one-off operation that solves the tasks combined with common functions in the priors (see example below). I suppose one could incorporate these one-off operations into the DSL. But keep adding too many and you&rsquo;d probably have been better off using a general language rather than DSL.</p>
+<div id="id-4"> <a class="lightgallery" href="/images/arc/arc_complex_tasks.png" title="ARC Complex Task" data-thumbnail="/images/arc/arc_complex_tasks.png">
+         <img
+             class="lazyload"
+             src="/svg/loading.min.svg"
+             data-src="/images/arc/arc_complex_tasks.png"
+             data-srcset="/images/arc/arc_complex_tasks.png, /images/arc/arc_complex_tasks.png 1.5x, /images/arc/arc_complex_tasks.png 2x"
+             data-sizes="auto"
+             alt="ARC Complex Task" width="50%" />
+     </a> 
+</div>
+<div id="id-5"><figure><a class="lightgallery" href="" title="" data-thumbnail="" data-sub-html="<h2>My description of the steps: 1. Select blue objects 2. Add orange squares to the NESW squares of the blue objects 3. Select red objects 4. Add yellow squares to the diagonal squares of the red objects. To me steps 2 and 4 feel really &lsquo;one-off&rsquo;, not quite something I&rsquo;d include in a DSL. Sure we can break it down further to fit some other general DSL, but nothing super simple.</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src=""
+            data-srcset=",  1.5x,  2x"
+            data-sizes="auto"
+            alt="" />
+    </a><figcaption class="image-caption">My description of the steps: 1. Select blue objects 2. Add orange squares to the NESW squares of the blue objects 3. Select red objects 4. Add yellow squares to the diagonal squares of the red objects. To me steps 2 and 4 feel really &lsquo;one-off&rsquo;, not quite something I&rsquo;d include in a DSL. Sure we can break it down further to fit some other general DSL, but nothing super simple.</figcaption>
+    </figure> 
+</div>
+<h3 id="top-solutions">Top solutions</h3>
+<p><strong>TL;DR - Everyone had a bunch of hand-crafted DSLs, and optimized code for fast search.</strong></p>
+<p>The amount of effort the top participants put is truly awe-inspiring! The only thing that slightly disappointed me was the number of DSLs that have so much in common, but were designed by everyone independently, and with custom fast software. In a sense, the competition strongly incentivized this due to the compute limit.</p>
+<p>Some solutions used hand crafted heuristics to filter their search process. Some hand coded extra tasks to improve their DSL evaluation.</p>
+<p>The top DSLs had these common themes:</p>
+<ul>
+<li>
+<p>Cut parts from input by color/shape/location/etc</p>
+</li>
+<li>
+<p>Recolor parts</p>
+</li>
+<li>
+<p>Check symmetries</p>
+</li>
+<li>
+<p>Moving and replicating objects</p>
+</li>
+</ul>
+<p>And many others that I&rsquo;m leaving out for brevity.</p>
+<p>Interestingly, nearly everyone converged to the same &ldquo;human like operations&rdquo;. It begs the question, is that the correct approach to solving ARC, and Abstraction and Reasoning as a problem in general?</p>
+<p><a href="https://www.kaggle.com/competitions/abstraction-and-reasoning-challenge/discussion/154597" target="_blank" rel="noopener noreffer ">First place solution</a> - Worth the read if you&rsquo;re interested.</p>
+<p><a href="https://www.kaggle.com/competitions/abstraction-and-reasoning-challenge/discussion/154349" target="_blank" rel="noopener noreffer ">Collection of all top solutions</a></p>
+<p>Interestingly, and perhaps obvious in hindsight, <strong>GPT-3</strong>, which came out later that year, <strong>completely failed the ARC tasks.</strong></p>
+<h3 id="ideas-i-tried">Ideas I tried</h3>
+<p><strong>DSL and Tree search</strong> - Like most others, I also tried to create a DSL that catered to the ARC tasks. I wouldn&rsquo;t say it was anything out of the ordinary, I had organized it in a way that functions operate on scalars, images, list of scalars, and list of images. For example, one function would take an image and split it into multiple images based on color, another would find the area of each object in the image, and so on. I performed simple Depth First Search on this DSL, discarding nodes based on some heuristics like absence of different colors in the outputs.  You can check the full code here. The code solved 20 training tasks, 8 test tasks, and only 1 evaluation task.😂</p>
+<p>Here&rsquo;s and example DSL function:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@register</span><span class="p">(</span><span class="s2">&#34;Image&#34;</span><span class="p">,</span> <span class="s2">&#34;ImageList&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">split_by_color</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34; Input an image, splits image list of images by different colors&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">img</span><span class="p">[</span><span class="n">img</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">outs</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">colimg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">colimg</span><span class="p">[</span><span class="n">img</span> <span class="o">==</span> <span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">img</span><span class="p">[</span><span class="n">img</span> <span class="o">==</span> <span class="n">c</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">outs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">colimg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">crop</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">_composite_imagelist_to_imagelist</span><span class="p">(</span><span class="n">outs</span><span class="p">,</span> <span class="n">_crop_nonzero</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">outs</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Yes writing in C++ would make the code run much faster, however, the development time would be much higher and at this point,  I was just trying to get an understanding of what kind of DSL is needed. As you can see the top solution, he truly put an insane amount of engineering effort into the competition, hats off.</p>
+<p><strong>Training a classifier on &ldquo;concepts&rdquo;</strong>: At this point I&rsquo;m thinking, okay so I can&rsquo;t write such a huge DSL right now, and Chollet claims deep learning can&rsquo;t do anything here. But its still the most powerful method I know of, so how can I try and leverage it, if at all. Can I prune my tree search with it somehow? What could I train a DL model on ARC for?</p>
+<p>If DL can do anything well, I thought, its probably going to be some vaguely specified concepts where coming up with rules is not straightforward. So I came up with a list of concepts which I annotated the train tasks for. These are quite similar to the priors mentioned in the paper but somewhat more specific. The idea was to train a classifier on these tasks, which can then help to prune the DFS.</p>
+<ul>
+<li>
+<p>Background Color</p>
+</li>
+<li>
+<p>Object Splitting</p>
+</li>
+<li>
+<p>Rotational Symmetry</p>
+</li>
+<li>
+<p>Translational Symmetry</p>
+</li>
+<li>
+<p>Counting</p>
+</li>
+<li>
+<p>Drawing Lines</p>
+</li>
+<li>
+<p>Movement</p>
+</li>
+<li>
+<p>Multi Symbol</p>
+</li>
+<li>
+<p>Color Structure</p>
+</li>
+<li>
+<p>Size Change</p>
+</li>
+<li>
+<p>Repeating</p>
+</li>
+<li>
+<p>Swap Colors</p>
+</li>
+<li>
+<p>Being Inside of</p>
+</li>
+</ul>
+<p>At first, I didn&rsquo;t expect the model to perform too well, but with some augmentations (color swapping and rotations), <strong>surprisingly the model actually got a good accuracy on most of the concepts</strong>. Of course, this was just on multiple folds being split and the <strong>dataset is tiny, so I can&rsquo;t say with confidence how good it actually was</strong>. The predictions on the test set seemed reasonable.</p>
+<p>Sadly, this was the middle of the pandemic, right near the beginning, and I wasn&rsquo;t able to test this idea further and had to stop working on the competition midway due to factors beyond my control.</p>
+<h1 id="distributed-arc">Distributed ARC</h1>
+<p>The main problem with the ARC to stay as a long term benchmark seems to be that the tasks are limited. It&rsquo;s easy to overfit to the evaluation tasks and call the benchmark solved. Even if you don&rsquo;t see the evaluation tasks, a 100 is not that many. But as Chollet had pointed out, its difficult for one person to come up with these tasks by hand. So how can we make ARC a long term benchmark? We use the power of crowd sourcing! I had this vague idea towards the end of 2020 but never tried to concretely formulate it. Then in 2021, Chollet discussed his idea of crowdsourcing at a high level in his <a href="https://www.youtube.com/watch?t=4439&amp;v=J0p_thJJnoo&amp;feature=youtu.be" target="_blank" rel="noopener noreffer ">interview</a> at Machine Learning Street Talk. Not much has happened about it though, or none that I know of.</p>
+<p>I&rsquo;ve tried to outline my thoughts on what the benchmark can grow into using crowdsourcing. I call it Distributed ARC.</p>
+<p>Here&rsquo;s my wishlist for a crowdsourced ARC benchmark</p>
+<ol>
+<li>
+<p>The collection of tasks should be large (&gt; 10,000). To avoid overfitting.</p>
+</li>
+<li>
+<p>Anyone should be able to submit new tasks, versioning can be done each year to improve datasets.</p>
+</li>
+<li>
+<p>Tasks should be accompanied by code to solve the task (but not necessarily made public).</p>
+</li>
+<li>
+<p>Optionally, priors used should be annotated, for some future direction of incorporating deep learning into possible solutions.</p>
+</li>
+</ol>
+<p>Managing such an evolving dataset of course needs a strong support structure, and possibly some initial incentive for people to create new tasks. But I do have confidence in human creativity and curiosity to create a much more diverse benchmark than what is currently available.</p>
+<h1 id="resources-and-references">Resources and references</h1>
+<ul>
+<li>
+<p><a href="https://www.kaggle.com/code/zaharch/visualizing-all-tasks-updated" target="_blank" rel="noopener noreffer ">Notebook showing all ARC tasks</a></p>
+</li>
+<li>
+<p><a href="https://arxiv.org/abs/1911.01547" target="_blank" rel="noopener noreffer ">On the measure of intelligence - Paper describing ARC</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=J0p_thJJnoo" target="_blank" rel="noopener noreffer ">Machine Learning Street Talk Interview - Francois Chollet</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=86ib0sfdFtw" target="_blank" rel="noopener noreffer ">Machine Learning Street Talk Interview - Yann LeCun</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=3_qGrmD6iQY" target="_blank" rel="noopener noreffer ">Yannic Kilcher&rsquo;s video playlist dicussing ARC</a></p>
+</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-02-10</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/thoughts-on-the-arc-benchmark/" data-title="Thoughts on the ARC Benchmark" data-via="__dipam__" data-hashtags="Deep Learning,Benchmarks"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/thoughts-on-the-arc-benchmark/" data-hashtag="Deep Learning"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="http://example.org/thoughts-on-the-arc-benchmark/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/deep-learning/">Deep Learning</a>,&nbsp;<a href="/tags/benchmarks/">Benchmarks</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/about/" class="next" rel="next" title="About me">About me<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a  href= "https://gohugo.io/" rel="noopener noreffer" target = "_blank"> Hugo </a> | Theme <a  href= "https://themes.gohugo.io/themes/loveit/" rel="noopener noreffer" target = "_blank"> Loveit</a></div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Dipam Chakraborty</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><link rel="stylesheet" href="/css/8c525f.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
