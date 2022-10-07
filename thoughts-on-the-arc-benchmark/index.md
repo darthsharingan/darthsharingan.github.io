@@ -1,7 +1,9 @@
 # Thoughts on the ARC Benchmark
 
 
-_Notes on the ARC benchmark, my experience at the competition, and how it can become a long-term benchmark in AI._
+
+
+_Notes on the ARC benchmark, my experience at the competition, and how it can become a long-term benchmark in AI - [Twitter Thread](https://twitter.com/__dipam__/status/1537483997428994048)_
 
 # The ARC Benchmark
 
